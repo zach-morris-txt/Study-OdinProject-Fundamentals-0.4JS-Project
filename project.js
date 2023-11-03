@@ -29,9 +29,10 @@ function getPlayerChoice(playerSelection) {
     //acquire player choice of ROCK, PAPER, or SCISSORS  *make case insensitive by capitalizing after assignment*
     let playerInput = prompt("Please enter ROCK, PAPER, or SCISSORS", "")
     playerInput = playerInput.toUpperCase()
+    //validation
     if (playerInput === "") {
         alert("Empty")
-    } else if (playerInput != "ROCK" || playerInput != "PAPER" || playerInput != "SCISSORS") {
+    } else if (playerInput != "ROCK" && playerInput != "PAPER" && playerInput != "SCISSORS") {
         alert(`${playerInput} is not a valid value`)
     } else {
         playerSelection = playerInput
