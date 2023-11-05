@@ -1,3 +1,4 @@
+//Global Variables
 let result =""
 
 
@@ -94,9 +95,11 @@ function playGame(computerSelection, playerSelection) {
 // playGame(computerSelection, playerSelection)
 
 
+//function for 5round game
 function game() {
     //score variable starting at 0
-    let score = 0
+    let playerScore = 0
+    let computerScore = 0
     //loop playRound function
     for (let i = 0; i < 5; i++) {
         let refreshedComputerChoice = getComputerChoice()
@@ -104,19 +107,29 @@ function game() {
 
         console.log(refreshedComputerChoice, refreshedPlayerChoice)
         playGame(refreshedComputerChoice, refreshedPlayerChoice)
+
+        //increment score for respective players until game 5
+        //console.log the winner every instance
         if (result === "Default Loss") {
             console.log("Loss by default; missing or incorrect value")
         } else if (result === "Win") {
             console.log("Win")
+            //increment "++" must be pre-fixed if I want to return incremented value
+            playerScore = ++playerScore
         } else if (result === "Loss") {
             console.log("Loss")
+            computerScore = ++computerScore
         } else {console.log("Tie")}
-            //increment score for respective players until game 5
-
-            //console.log the winner every instance
-
-            //declare winner using % modulo after fifth game 
-
+    }
+    if (playerScore > computerScore) {
+        alert("Game Win")
+        console.log("Game Win")
+    } else if (playerScore < computerScore) {
+        alert("Game Loss")
+        console.log("Game Loss")
+    } else {
+        alert("Game Tie")
+        console.log("Game Tie")
     }
 }
 game(playGame(computerSelection, playerSelection))
