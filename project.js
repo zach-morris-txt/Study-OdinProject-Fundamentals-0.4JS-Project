@@ -1,18 +1,21 @@
+let result =""
+
+
 //function for computer choice rock/paper/scissors
-function getComputerChoice(compChoice) {
+function getComputerChoice(computerSelection) {
     //acquire random number
     let randomNumber = Math.trunc(Math.random() *100)
     //if random number between 0 and 3.33 return ROCK
     if (randomNumber >= 0 && randomNumber <= 33) {
-        return compChoice = "ROCK"
+        return computerSelection = "ROCK"
     }
     //else if random number between 3.34 and 6.66 return PAPER
     else if (randomNumber >= 34 && randomNumber <= 66) {
-        return compChoice = "PAPER"
+        return computerSelection = "PAPER"
     }
     //else random number between 6.67 and 10 return SCISSORS
     else {
-        return compChoice = "SCISSORS"
+        return computerSelection = "SCISSORS"
     }
 }
 const computerSelection = getComputerChoice()
@@ -37,67 +40,83 @@ const playerSelection = getPlayerChoice()
 
 //function for single round
 function playGame(computerSelection, playerSelection) {
-    console.log(`Value is ${computerSelection} and ${playerSelection}`)
     //if computer is rock
     if (computerSelection === "ROCK") {
         if (playerSelection === "ROCK") {
-            return alert("You tie!")
+            alert("You tie!")
+            return result = "Tie"
         }
         else if (playerSelection === "PAPER") {
-            return alert("You lose!")
+            alert("You lose!")
+            return result = "Loss"
         }
         else {
-            return alert("You win!")
+            alert("You win!")
+            return result = "Win"
         }
     }
     //if computer is paper
     else if (computerSelection === "PAPER") {
         if (playerSelection === "PAPER") {
-            return alert("You tie!")
+            alert("You tie!")
+            return result = "Tie"
         }
         else if (playerSelection === "ROCK") {
-            return alert("You lose!")
+            alert("You lose!")
+            return result = "Loss"
         }
         else {
-            return alert("You win!")
+            alert("You win!")
+            return result = "Win"
         }
     }
     //if computer is scissor
     else {
         if (playerSelection === "SCISSORS") {
-            return alert("You tie!")
+            alert("You tie!")
+            return result = "Tie"
         }
         else if (playerSelection === "PAPER") {
-            return alert("You lose!")
+            alert("You lose!")
+            return result = "Loss"
         } 
         //Handle values outside of rock, paper, or scissors
         else if (playerSelection !== "ROCK") {
-            return alert("YOU CHEATED AND STILL LOST!! Play fair, input a correct value!!!")
+            alert("YOU CHEATED AND STILL LOST!! Play fair, input a correct value!!!")
+            return result = "Default Loss"
         }
         else {
-            return alert("You win!")
+            alert("You win!")
+            return result = "Win"
         }
     }
 }
 // playGame(computerSelection, playerSelection)
 
 
-function game(playGame) {
+function game() {
     //score variable starting at 0
     let score = 0
     //loop playRound function
     for (let i = 0; i < 5; i++) {
-        playGame()
-        if (playGame = "You win!") {
-            score = score++
-        }
+        let refreshedComputerChoice = getComputerChoice()
+        let refreshedPlayerChoice = getPlayerChoice()
+
+        console.log(refreshedComputerChoice, refreshedPlayerChoice)
+        playGame(refreshedComputerChoice, refreshedPlayerChoice)
+        if (result === "Default Loss") {
+            console.log("Loss by default; missing or incorrect value")
+        } else if (result === "Win") {
+            console.log("Win")
+        } else if (result === "Loss") {
+            console.log("Loss")
+        } else {console.log("Tie")}
+            //increment score for respective players until game 5
+
+            //console.log the winner every instance
+
+            //declare winner using % modulo after fifth game 
+
     }
-    //increment score for respective players until game 5
-
-    //console.log the winner every instance
-
-
-    //declare winner using % modulo after fifth game 
-
 }
-game()
+game(playGame(computerSelection, playerSelection))
